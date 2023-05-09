@@ -8,7 +8,7 @@
       <el-col :span="4"> <el-button link>忘记密码?</el-button></el-col>
     </el-row>
     <el-row>
-      <el-button class="w-100%" type="primary">登录</el-button>
+      <el-button class="w-100%" type="primary" @click="login">登录</el-button>
     </el-row>
   </div>
 </template>
@@ -16,11 +16,19 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
 import type { User } from '@/modules/user'
+import { useRouter } from 'vue-router'
 const userInfo = reactive<User>({
   username: '',
   password: '',
   checked: false
 })
+
+const router = useRouter()
+const login = () => {
+  router.push({
+    path: '/home'
+  })
+}
 </script>
 
 <style lang="scss" scoped></style>
