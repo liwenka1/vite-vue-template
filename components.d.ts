@@ -9,6 +9,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Aside: typeof import('./src/components/Home/Aside.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']
@@ -26,9 +27,10 @@ declare module '@vue/runtime-core' {
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    Header: typeof import('./src/components/Home/Header.vue')['default']
+    Home: typeof import('./src/components/Home/index.vue')['default']
+    Login: typeof import('./src/components/Login/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    User: typeof import('./src/components/user.vue')['default']
   }
 }

@@ -12,11 +12,11 @@ const routes = [
   },
   {
     path: '/login',
-    component: () => import('@/pages/login.vue')
+    component: () => import('@/components/Login/index.vue')
   },
   {
     path: '/home',
-    component: () => import('@/pages/home.vue'),
+    component: () => import('@/components/Home/index.vue'),
     redirect: '/home/user', //新增
     children: [
       {
