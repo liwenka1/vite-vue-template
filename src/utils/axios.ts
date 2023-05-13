@@ -5,7 +5,7 @@ import axios from 'axios'
  * 与后端服务通信
  */
 const HttpClient = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL
+  baseURL: 'https://mock.mengxuegu.com/mock/645e56847ba95d67784d6d5b/mock'
 })
 
 /**

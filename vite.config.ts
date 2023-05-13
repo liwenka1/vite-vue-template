@@ -43,11 +43,11 @@ export default defineConfig({
     open: true,
     https: false,
     proxy: {
-      '/api': {
-        target: '要代理的地址',
+      '/mock': {
+        target: 'https://mock.mengxuegu.com/mock/645e56847ba95d67784d6d5b/mock',
         changeOrigin: true,
         ws: true,
-        rewrite: (path: string) => path.replace(/^\/api/, '')
+        rewrite: (path: string) => path.replace(/^\/mock/, '/')
       }
     }
   },
