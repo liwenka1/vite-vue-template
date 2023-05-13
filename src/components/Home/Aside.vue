@@ -41,10 +41,10 @@ import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/ico
 
 const isCollapse = ref(false)
 const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+  return [key, keyPath]
 }
 const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
+  return [key, keyPath]
 }
 </script>
 
