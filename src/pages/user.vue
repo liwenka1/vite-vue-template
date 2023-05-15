@@ -1,36 +1,39 @@
 <template>
-  <div>
-    <div>姓名：{{ userInfo.name }} 年龄：{{ userInfo.age }}</div>
-    <div>token：{{ token }}</div>
-    <div>getter值：{{ newName }}</div>
-    <button @click="handleUser">更新用户</button>
-    <button @click="handleAge">更新年龄</button>
-    <button @click="handleToken">更新token</button>
-  </div>
+  <div id="container"></div>
 </template>
 
-<script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useUserStore } from '@/store/user' //路径别名，引入store
-
-const userStore = useUserStore()
-
-//storeToRefs 会跳过所有的 action 属性
-const { userInfo, token, newName } = storeToRefs(userStore)
-
-//action 属性直接解构
-const { updateUserInfo, updateAge, updateToken } = userStore
-
-const handleUser = () => {
-  updateUserInfo({ name: 'lisi', age: 24 })
+<script lang="ts" setup>
+import AMapLoader from '@amap/amap-jsapi-loader'
+import { shallowRef, onMounted } from 'vue'
+const map = shallowRef(null)
+const initMap = () => {
+  AMapLoader.load({
+    key: 'd779ec914c0011c83b02940b2ca3d7d4', // 申请好的Web端开发者Key，首次调用 load 时必填
+    version: '2.0', // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+    plugins: [''] // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+  })
+    .then((AMap) => {
+      map.value = new AMap.Map('container', {
+        //设置地图容器id
+        viewMode: '3D', //是否为3D地图模式
+        zoom: 5, //初始化地图级别
+        center: [105.602725, 37.076636] //初始化地图中心点位置
+      })
+    })
+    .catch((e) => {
+      return e
+    })
 }
-
-const handleAge = () => {
-  //userInfo是一个ref响应式引用，需通过.value取值
-  updateAge(userInfo.value.age + 1)
-}
-
-const handleToken = () => {
-  updateToken('23234')
-}
+onMounted(() => {
+  initMap()
+})
 </script>
+
+<style scoped>
+#container {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 800px;
+}
+</style>
