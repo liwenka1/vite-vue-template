@@ -1,11 +1,10 @@
 <template>
-  <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-    <el-radio-button :label="false">expand</el-radio-button>
-    <el-radio-button :label="true">collapse</el-radio-button>
-  </el-radio-group>
   <el-menu
+    active-text-color="#ffd04b"
+    background-color="#545c64"
+    class="el-menu-vertical-demo h-100%"
     default-active="2"
-    class="el-menu-vertical-demo"
+    text-color="#fff"
     :collapse="isCollapse"
     @open="handleOpen"
     @close="handleClose"
@@ -16,19 +15,31 @@
         <span>首页</span>
       </template>
       <el-menu-item-group>
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item two</el-menu-item>
+        <el-menu-item index="1-1">分析台</el-menu-item>
+        <el-menu-item index="1-2">工作台</el-menu-item>
       </el-menu-item-group>
     </el-sub-menu>
     <el-menu-item index="2">
-      <el-icon><icon-menu /></el-icon>
+      <el-icon><lock /></el-icon>
       <template #title>权限管理</template>
     </el-menu-item>
     <el-menu-item index="3">
+      <el-icon><icon-menu /></el-icon>
+      <template #title>图表</template>
+    </el-menu-item>
+    <el-menu-item index="4">
+      <el-icon><Clock /></el-icon>
+      <template #title>页面</template>
+    </el-menu-item>
+    <el-menu-item index="5">
+      <el-icon><Pointer /></el-icon>
+      <template #title>组件</template>
+    </el-menu-item>
+    <el-menu-item index="6">
       <el-icon><document /></el-icon>
       <template #title>系统管理</template>
     </el-menu-item>
-    <el-menu-item index="4">
+    <el-menu-item index="7">
       <el-icon><setting /></el-icon>
       <template #title>关于</template>
     </el-menu-item>
@@ -48,9 +59,4 @@ const handleClose = (key: string, keyPath: string[]) => {
 }
 </script>
 
-<style>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
-  min-height: 400px;
-}
-</style>
+<style></style>
