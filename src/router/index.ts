@@ -10,6 +10,10 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   // ✅ 这样做是可行的，因为路由器是在其被安装之后开始导航的，
   // 而此时 Pinia 也已经被安装。
+  if (!from.path) {
+    return
+  }
+
   const store = useUserStore()
   if (!store.token) {
     next({
